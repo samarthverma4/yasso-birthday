@@ -1,0 +1,8 @@
+{
+  "name": "yasso-birthday",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@upstash/redis": "^1.34.0"
+  }
+}

@@ -1,0 +1,51 @@
+/* The same hand-painted charm stays tucked into every screen's corner. */
+.corner-nimbu{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));top:calc(8px + env(safe-area-inset-top,0px));width:clamp(32px,4.8vw,58px);height:auto;z-index:205;pointer-events:none;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.2))}
+#skip,#drive{right:calc(clamp(32px,4.8vw,58px) + 18px + env(safe-area-inset-right,0px))}
+.hero-confetti{margin-top:18px}
+.cake-panel .lede{max-width:40ch}
+.cake-lock{max-width:420px;margin:0 auto 24px;padding:16px;border:3px solid #000;border-radius:14px;background:var(--cream);color:#000;box-shadow:5px 5px 0 #000}
+.cake-lock[hidden]{display:none}
+.lock-tag{font-family:var(--script);font-size:1.25rem;color:#84224e}
+.cake-lock p{font-size:.8rem;margin:6px 0}
+#cake-countdown{font-size:1.7rem;font-variant-numeric:tabular-nums;letter-spacing:.07em}
+.cake-steps{display:flex;justify-content:center;gap:8px;list-style:none;padding:0;margin:16px auto 24px;flex-wrap:wrap;font-size:.75rem;font-weight:800}
+.cake-steps li{border:2px solid #000;border-radius:999px;padding:5px 10px;background:#086733;color:#fff}
+.cake-steps li[aria-current="step"]{background:var(--marigold);color:#000;box-shadow:3px 3px 0 #000}
+.cake-steps li.done{background:var(--cream);color:#000}
+.cake-start{background:var(--marigold);font-size:clamp(.8rem,3vw,1rem);white-space:normal}
+.cake-panel button:disabled{cursor:not-allowed;opacity:.65}
+.cake-panel button[hidden]{display:none}
+.cake-scene{position:relative;width:min(440px,100%);height:auto;aspect-ratio:1;min-height:290px;margin:20px auto 0;perspective:1100px;isolation:isolate}
+.cake-camera{position:absolute;width:100%;aspect-ratio:1;top:30px;transform:rotateX(55deg);transform-style:preserve-3d;transition:transform 1.15s cubic-bezier(.22,.7,.3,1),top 1.15s}
+.cake-scene.overhead .cake-camera{transform:rotateX(0deg);top:0}
+.cake-dish{position:absolute;inset:1%;border:4px solid #000;border-radius:50%;background:repeating-radial-gradient(circle,#c8d3de 0 6px,#fff 7px 10px,#97a9b7 11px 12px);box-shadow:0 8px 0 #000}
+.cake-whole,.cake-slice,.cake-scene .candles{position:absolute;inset:0;width:100%;height:100%;transform-style:preserve-3d;margin:0;display:block}
+.cake-layer{position:absolute;width:var(--size);height:var(--size);left:calc((100% - var(--size))/2);top:calc((100% - var(--size))/2);transform:translateZ(var(--z));border:3px solid #000;border-radius:50%;background:var(--fill);border-color:var(--fill)}
+.cake-layer:first-child{border-color:#000}
+.cake-layer.icing{background:radial-gradient(circle at 50% 50%,transparent 60%,var(--cream) 61% 68%,#000 69% 70%,transparent 71%),repeating-conic-gradient(from 10deg,var(--fill) 0deg 15deg,var(--accent) 15deg 30deg);border:4px solid #000}
+.cake-layer.top-icing{background:radial-gradient(circle at 50% 50%,var(--cream) 0 51%,transparent 52%),repeating-conic-gradient(var(--pink) 0 15deg,var(--marigold) 15deg 30deg)}
+.cake-lettering{position:absolute;inset:27% 10%;display:flex;flex-direction:column;justify-content:center;font-family:var(--script);font-size:clamp(16px,4vw,26px);line-height:1.15;color:#bc1758;transform:rotate(-7deg);text-shadow:1px 1px #fff}
+.cake-lettering small{font-size:.6em;color:#1437C9}
+.cake-slot{position:absolute;left:var(--x);top:var(--y);width:0;height:0;transform:translateZ(112px) rotateX(-55deg);transform-style:preserve-3d}
+.cake-scene .candle{position:absolute;left:-10px;bottom:0;width:20px;flex:none;touch-action:none;transform-origin:50% 100%;border-bottom:3px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,.2)}
+.cake-scene.is-locked .flame{animation:none;opacity:.45}
+
+.cake-scene.removing .candle{cursor:grab}
+.cake-scene .candle{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.cake-scene .candle.drag-origin{opacity:0;cursor:grabbing}
+.candle-drag-ghost{position:fixed;z-index:1000;pointer-events:none;margin:0;border:3px solid #000;border-radius:4px 4px 0 0;box-shadow:4px 8px 4px rgba(0,0,0,.3);will-change:transform}
+.cake-slice{visibility:hidden;transition:translate .9s cubic-bezier(.22,.7,.3,1)}
+.cake-scene.served .cake-whole .cake-layer{clip-path:polygon(0 0,50% 0,50% 50%,100% 50%,100% 100%,0 100%)}
+.cake-slice .cake-layer{clip-path:polygon(50% 0,100% 0,100% 50%,50% 50%)}
+.cake-scene.served .cake-slice{visibility:visible;translate:18px -18px}
+.cake-knife{position:absolute;z-index:4;left:74%;top:6%;width:clamp(40px,10vw,58px);height:clamp(135px,35vw,190px);transform:rotate(35deg);transform-origin:50% 70%;cursor:grab;touch-action:none;filter:drop-shadow(4px 5px 0 rgba(0,0,0,.25))}
+.cake-knife[hidden]{display:none}.cake-knife svg{width:100%;height:100%;pointer-events:none}
+.cake-knife.dragging{cursor:grabbing}
+.cake-knife.slicing{animation:cutSlice 1.5s ease-in-out forwards;pointer-events:none}
+@keyframes cutSlice{0%{left:74%;top:6%;transform:rotate(35deg)}35%{left:44%;top:0;transform:rotate(180deg)}55%{left:44%;top:21%;transform:rotate(180deg)}70%{left:62%;top:26%;transform:rotate(-90deg)}90%{left:47%;top:26%;transform:rotate(-90deg)}100%{left:82%;top:12%;transform:rotate(35deg)}}
+.cake-actions{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;min-height:28px}
+.cake-panel .status{max-width:38ch;margin:8px auto 22px;font-size:clamp(1.1rem,3.5vw,1.45rem)}
+@media(max-width:560px){.cake-scene{margin-top:70px}.cake-steps{font-size:.65rem;gap:5px}.cake-steps li{padding:4px 7px}.cake-panel h2{padding-inline:1.2em}.cake-scene .candle{width:17px;left:-8px}.cake-scene .flame{width:14px;margin-left:-7px}.corner-nimbu{right:12px}}
+@media(prefers-reduced-motion:reduce){.cake-camera,.cake-slice{transition:none}.cake-knife.slicing{animation:none}.corner-nimbu{animation:none}}
+.cake-slot:nth-child(3n+2) .candle{background:repeating-linear-gradient(135deg,var(--cream) 0 7px,var(--royal) 7px 14px)}
+.cake-slot:nth-child(3n) .candle{background:repeating-linear-gradient(135deg,var(--cream) 0 7px,var(--orange) 7px 14px)}
